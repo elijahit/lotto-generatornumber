@@ -11,5 +11,8 @@
     "lacerba"
   ],
   "author": "Elijah",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.8.6"
+  }
 }
