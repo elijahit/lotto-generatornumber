@@ -1,0 +1,15 @@
+{
+  "name": "estrazione-enalotto",
+  "version": "1.0.0",
+  "description": "Generatore numeri del Lotto",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "enalotto",
+    "lacerba"
+  ],
+  "author": "Elijah",
+  "license": "ISC"
+}
