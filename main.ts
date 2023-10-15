@@ -3,13 +3,6 @@ function randomGenerator(min: number, max: number) {
     const rng = Math.random();
     return Math.trunc(rng * (max - min) + min);
 }
-
-// for (let i = 0; i < 10; i++){
-//     console.log(randomGenerator(1,100));
-// }
-
-
-//Genera Random Number con decimali e senza.
 function RNGDec(min: number, max: number, precision: number) {
     const multFactor = Math.pow(10, precision);
     return randomGenerator(min * multFactor, max *multFactor) / multFactor;
@@ -34,7 +27,11 @@ function RNGSequence(min: number, max: number, len: number) {
     return res;
 }
 
-const route = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 
+const route = [
+    'Bari', 
+    'Cagliari', 
+    'Firenze', 
+    'Genova', 'Milano', 
 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia', 'Nazionale'];
 
 
@@ -46,4 +43,38 @@ for (const ruota of route) {
     
 }
 
-console.log(JSON.stringify(estrazioni, null, 2))
+console.log(JSON.stringify(estrazioni, null, 2));
+
+function createRuotaContainer(name: string, estrazioni: number[]){
+    const ruotaDiv = document.createElement('div');
+    ruotaDiv.className = `ruota ${name.toLowerCase()}`;
+    const nameH2 = document.createElement('h2');
+    nameH2.innerText = name;
+    ruotaDiv.appendChild(nameH2);
+    nameH2.className = 'ruota-title';
+
+    for (const num of estrazioni){
+        const numP = document.createElement('p');
+        numP.innerText = '' + num;
+        const numDiv = document.createElement('div');
+        numDiv.className = 'ruota-estrazione';
+        numDiv.appendChild(numP);
+        numP.className = 'ruota-estrazione';
+        ruotaDiv.appendChild(numDiv);
+    }
+    return ruotaDiv;
+}
+
+const container = document.getElementById("cnt");
+if(container) {
+    const pre = document.createElement('pre');
+
+    for (const ruota of route) {
+        const ruotaEstrazioni = estrazioni[ruota];
+        const ruotaDiv = createRuotaContainer(ruota, ruotaEstrazioni);
+        container.appendChild(ruotaDiv);
+    }
+    // pre.innerText = JSON.stringify(estrazioni, null, 2);
+    // container.appendChild(pre)
+}
+
